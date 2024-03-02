@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { InterFont, PoppinsFont } from "@/utils/font";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Drawer from "@/components/Drawer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +22,9 @@ export default function RootLayout({
       className={`${InterFont.variable} ${PoppinsFont.variable} `}
     >
       <body>
-        <main className="font-inter">{children}</main>
+        <main className="font-inter">
+          <Drawer>{children}</Drawer>
+        </main>
       </body>
     </html>
   );
