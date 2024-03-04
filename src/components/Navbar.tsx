@@ -54,14 +54,14 @@ export default function Navbar() {
           </div>
           <ul className="menu menu-horizontal px-1 hidden md:flex">
             <li>
-              <a>Home</a>
+              <Link href={"/"}>Home</Link>
             </li>
             <li>
-              <a>About Us</a>
+              <Link href={"#"}>About Us</Link>
             </li>
 
             <li>
-              <a>Properties</a>
+              <Link href={"/properties"}>Properties</Link>
             </li>
           </ul>
         </div>
@@ -83,14 +83,14 @@ export function SideDrawer() {
       <ul className="menu p-4 w-60 min-h-full bg-base-200">
         {/* Sidebar content here */}
         <li>
-          <a>Home</a>
+          <Link href={"/"}>Home</Link>
         </li>
         <li>
-          <a>About Us</a>
+          <Link href={"#"}>About Us</Link>
         </li>
 
         <li>
-          <a>Properties</a>
+          <Link href={"/properties"}>Properties</Link>
         </li>
       </ul>
     </div>

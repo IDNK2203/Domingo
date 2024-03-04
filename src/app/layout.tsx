@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { InterFont, PoppinsFont } from "@/utils/font";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Drawer from "@/components/Drawer";
 
 export const metadata: Metadata = {
@@ -19,6 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="corporate"
       className={`${InterFont.variable} ${PoppinsFont.variable} `}
     >
       <body>
