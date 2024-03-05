@@ -32,7 +32,7 @@ const config: Config = {
     require("tailwind-scrollbar")({ nocompatible: true }),
   ],
   daisyui: {
-    themes: ["corporate"],
+    themes: ["emerald"],
   },
 };
 export default config;

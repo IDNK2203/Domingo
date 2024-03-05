@@ -36,7 +36,7 @@ function PropListing({ property }: { property: Property[] }) {
 function ListedProperty({ property }: { property: Property }) {
   return (
     <li className="p-2 border-black border-2 rounded-lg relative">
-      <Link href={`/propeties/${property.slug}`} className="">
+      <Link href={`/properties/${property.slug}`} className="">
         <EnvelopeIcon className="absolute top-4 start-4 h-4 z-10" />
         <div className={"rounded-lg relative h-48"}>
           <Image

@@ -157,6 +157,48 @@ function PropListing({ property }: { property: Property[] }) {
   );
 }
 
+function FeaturedProperty({ property }: { property: Property }) {
+  return (
+    <li className="p-2 border-black border-2 rounded-lg relative">
+      <EnvelopeIcon className="absolute top-4 start-4 h-4  z-[1]" />
+      <div className={"rounded-lg relative h-48"}>
+        <Image
+          alt="Mountains"
+          src={property.main_image_url}
+          fill
+          sizes="100vw"
+          className="rounded-lg object-cover"
+        />
+      </div>
+      <div className="flex justify-between py-1">
+        <span>{property.type}</span>
+        <small className="flex">
+          <span>
+            <EnvelopeIcon className="h-4 px-2" />
+          </span>
+          <span>{property.location.split(",")[0]}</span>
+        </small>
+      </div>
+      <div className="flex justify-between py-1">
+        <span>{property.price}</span>
+        <small className="flex">
+          <span className="flex">
+            <EnvelopeIcon className="h-4 px-2" />
+            <span>4</span>
+          </span>
+          <span className="flex">
+            <EnvelopeIcon className="h-4 px-2" />
+            <span>2</span>
+          </span>
+        </small>
+      </div>
+      <Link href={`/properties/${property.slug}`} className="btn  w-full">
+        View Listing
+      </Link>
+    </li>
+  );
+}
+
 function Why() {
   return (
     <section className="max-w-7xl md:flex items-center w-full mx-auto px-4 border-black border-2 py-8">
@@ -228,48 +270,6 @@ export function RecentlySoldList() {
         </div>
       )} */}
     </ul>
-  );
-}
-
-function FeaturedProperty({ property }: { property: Property }) {
-  return (
-    <li className="p-2 border-black border-2 rounded-lg relative">
-      <EnvelopeIcon className="absolute top-4 start-4 h-4 z-10" />
-      <div className={"rounded-lg relative h-48"}>
-        <Image
-          alt="Mountains"
-          src={property.main_image_url}
-          fill
-          sizes="100vw"
-          className="rounded-lg object-cover"
-        />
-      </div>
-      <div className="flex justify-between py-1">
-        <span>{property.type}</span>
-        <small className="flex">
-          <span>
-            <EnvelopeIcon className="h-4 px-2" />
-          </span>
-          <span>{property.location.split(",")[0]}</span>
-        </small>
-      </div>
-      <div className="flex justify-between py-1">
-        <span>{property.price}</span>
-        <small className="flex">
-          <span className="flex">
-            <EnvelopeIcon className="h-4 px-2" />
-            <span>4</span>
-          </span>
-          <span className="flex">
-            <EnvelopeIcon className="h-4 px-2" />
-            <span>2</span>
-          </span>
-        </small>
-      </div>
-      <Link href={`/propeties/${property.slug}`} className="btn  w-full">
-        View Listing
-      </Link>
-    </li>
   );
 }
 
