@@ -1,12 +1,18 @@
 import Image, { StaticImageData } from "next/image";
-import properties from "../../../../public/assets/data/propeties.json";
+// import properties from "../../../../public/assets/data/propeties.json";
 import { Property } from "../../../../types";
 import why from "../../../../public/images/why.jpg";
 import chevronDown from "../../../../public/images/icon-arrow-down.svg";
+import { getSingleProp } from "@/dataFetching/properties";
+import ShowInterest from "@/components/ShowInterest";
 
-export default function PropertyDetail({ params }: { params: { id: string } }) {
+export default async function PropertyDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id: slug } = params;
-  const property = properties.data.find((el) => el.slug === slug);
+  const { data: property } = await getSingleProp(slug);
 
   if (!property) {
     return (
@@ -26,8 +32,8 @@ export default function PropertyDetail({ params }: { params: { id: string } }) {
       <Details property={property} />
       <div className="md:flex md:flex-row-reverse">
         {/*ShowInterest  */}
-        <div className="md:basis-4/12  border-gray-300 border-[1px] rounded">
-          <ShowInterest />
+        <div className="md:basis-4/12">
+          <ShowInterest propertyId={property.id} />
         </div>
         <div className="md:basis-8/12 pr-4">
           {/* Description */}
@@ -35,8 +41,8 @@ export default function PropertyDetail({ params }: { params: { id: string } }) {
           <HorizontalLine />
           {/* features */}
           <Features property={property} />
+          You have indicated interest in this property
           <HorizontalLine />
-
           {/* gallery */}
           <Gallery property={property} />
         </div>
@@ -85,88 +91,6 @@ function Details({ property }: { property: Property }) {
           ))}
         </ul>
       </div>
-    </div>
-  );
-}
-
-function ShowInterest() {
-  return (
-    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-lg ">
-        <h3 className="text-xl font-bold ">Show Interest</h3>
-
-        <p className="mt-4 text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
-          nulla eaque error neque
-        </p>
-      </div>
-
-      <form action="#" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
-        <div>
-          <label htmlFor="password" className="sr-only">
-            Full Name
-          </label>
-
-          <div className="relative">
-            <input
-              type="text"
-              className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-              placeholder="Enter password"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="email" className="sr-only">
-            Email Adress
-          </label>
-
-          <div className="relative">
-            <input
-              type="email"
-              className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-              placeholder="Enter email"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="password" className="sr-only">
-            Phone Number
-          </label>
-
-          <div className="relative">
-            <input
-              type="text"
-              className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-              placeholder="Enter password"
-            />
-          </div>
-        </div>
-
-        <div className="my-2">
-          <button type="submit" className="btn w-full my-2">
-            Show Interest
-          </button>
-          <button className="btn w-full my-2 ">
-            Button
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-          </button>
-        </div>
-      </form>
     </div>
   );
 }

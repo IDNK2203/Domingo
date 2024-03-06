@@ -3,6 +3,7 @@ import properties from "../../../public/assets/data/propeties.json";
 import { Property } from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
+import { getFeatureProps } from "@/dataFetching/properties";
 
 export default function Properties() {
   return (
@@ -13,15 +14,15 @@ export default function Properties() {
   );
 }
 
-function PropListing({ property }: { property: Property[] }) {
-  const propt = properties.data?.slice(0, 9);
-
+async function PropListing({ property }: { property: Property[] }) {
+  const { data: properties } = await getFeatureProps();
+  const PropsListing = properties?.slice(0, 9);
   return (
     <section className="max-w-7xl w-full mx-auto px-4 border-black border-2 py-8">
       <h2 className="my-2">Listed Properties</h2>
 
       <ul className="my-2 grid gap-5 min-[520px]:grid-cols-2 md:grid-cols-3">
-        {propt.map((property) => (
+        {PropsListing.map((property: Property) => (
           <ListedProperty property={property} key={property.id} />
         ))}
         {/* {invoices.length < 1 && (
