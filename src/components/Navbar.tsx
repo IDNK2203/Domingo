@@ -48,14 +48,16 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="navbar-center ">
-          <div className="w-8 h-8 relative my-0 flex md:hidden ">
-            <Image
-              src={logo}
-              alt={"logo"}
-              fill
-              className="object-contain"
-            ></Image>
-          </div>
+          <Link href="/" className="flex md:hidden">
+            <div className="w-8 h-8 relative my-0 flex md:hidden ">
+              <Image
+                src={logo}
+                alt={"logo"}
+                fill
+                className="object-contain"
+              ></Image>
+            </div>
+          </Link>
           <ul className="menu menu-horizontal px-1 hidden md:flex">
             <li
               className={`font-medium  *:active:bg-transparent  ${

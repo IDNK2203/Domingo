@@ -53,7 +53,7 @@ function FooterForm() {
           <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2 text-primary" />
           <input
             type="email"
-            className="rounded-lg input input-bordered w-full pl-10 pr-12 text-sm shadow-sm"
+            className="rounded-lg input input-bordered w-full pl-10 pr-12 text-sm text-[--fore_dark] shadow-sm"
             placeholder="Enter email ...."
           />
 
@@ -124,33 +124,31 @@ const HorizontalLine = () => {
 
 function SocailsnCopy() {
   return (
-    <div className="md:flex md:justify-between pt-6 pb-2 md:items-center">
+    <div className="md:flex md:justify-between pt-6  md:items-center">
       <div className="">
         <small className="text-sm ">copyright @ Domingo.co</small>
       </div>
-      <div className="">
-        <ul className="flex">
-          {/* Sidebar content here */}
-          <li className="p-3 rounded-full bg-white ml-2 font-medium">
-            <Link href={"#"}>
-              {" "}
-              <FaFacebook className="text-base text-primary" />
-            </Link>
-          </li>
-          <li className="p-3 rounded-full bg-white ml-2  font-medium">
-            <Link href={"#"}>
-              <RiInstagramFill className="text-base text-primary" />
-            </Link>
-          </li>
+      <ul className="flex py-4">
+        {/* Sidebar content here */}
+        <li className="p-3 rounded-full bg-white md:ml-2 font-medium">
+          <Link href={"#"}>
+            {" "}
+            <FaFacebook className="text-base text-primary" />
+          </Link>
+        </li>
+        <li className="p-3 rounded-full bg-white ml-2  font-medium">
+          <Link href={"#"}>
+            <RiInstagramFill className="text-base text-primary" />
+          </Link>
+        </li>
 
-          <li className="p-3 rounded-full bg-white ml-2 font-medium">
-            <Link href={"#"}>
-              {" "}
-              <FaTwitter className="text-base text-primary" />
-            </Link>
-          </li>
-        </ul>
-      </div>
+        <li className="p-3 rounded-full bg-white ml-2 font-medium">
+          <Link href={"#"}>
+            {" "}
+            <FaTwitter className="text-base text-primary" />
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 }

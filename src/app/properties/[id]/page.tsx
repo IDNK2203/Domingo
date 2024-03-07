@@ -40,7 +40,7 @@ export default async function PropertyDetail({
         <div className="md:basis-4/12">
           <ShowInterest propertyId={property.id} />
         </div>
-        <div className="md:basis-8/12 pr-4">
+        <div className="md:basis-8/12 md:pr-8">
           {/* Description */}
           <Description property={property} />
           <HorizontalLine />
@@ -82,7 +82,7 @@ function Details({ property }: { property: Property }) {
       </div>
       <div className="my-2">
         <ul className="flex flex-wrap">
-          <li className="mr-2">
+          <li className="mr-2 my-2">
             <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
               <div className="relative h-6 w-6 mr-2">
                 <Image
@@ -99,7 +99,7 @@ function Details({ property }: { property: Property }) {
             </div>
           </li>
 
-          <li className="mr-2">
+          <li className="mr-2 my-2">
             <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
               <div className="relative h-6 w-6 mr-2">
                 <Image
@@ -115,7 +115,7 @@ function Details({ property }: { property: Property }) {
               <span>6 Bedrooms</span>
             </div>
           </li>
-          <li className="mr-2">
+          <li className="mr-2 my-2">
             <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
               <div className="relative h-6 w-6 mr-2">
                 <Image
@@ -131,7 +131,7 @@ function Details({ property }: { property: Property }) {
               <span>3 Toilets</span>
             </div>
           </li>
-          <li className="mr-2">
+          <li className="mr-2 my-2">
             <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
               <div className="relative h-6 w-6 mr-2">
                 <Image

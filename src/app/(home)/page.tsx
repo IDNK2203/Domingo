@@ -31,7 +31,7 @@ export default function Home() {
 }
 function Hero() {
   return (
-    <section className={"relative w-full h-dvh"}>
+    <section className={"relative w-full md:h-dvh h-[520px] "}>
       <Image
         alt="Mountains"
         src={hero}
@@ -47,14 +47,14 @@ function Hero() {
 
       <div
         className={
-          "flex flex-col bg-black/20 h-full p-20  text-white justify-center items-start"
+          "flex flex-col bg-black/40 h-[520px] md:h-full p-4 md:p-20  text-white justify-center items-start"
         }
       >
         <div className="mt-12 md:mt24 max-w-2xl">
-          <h1 className="my-2 text-6xl font-bold leading-snug">
+          <h1 className="my-4 text-2xl lg:text-6xl font-bold leading-snug">
             Find Your Perfect Place To Call Home
           </h1>
-          <p className="my-4e">
+          <p className="my-4">
             With an extensive network of seasoned professionals with in-depth
             knowledge of the real estate market. We leverage our expertise to
             guide you through every step of your property journey. We are
@@ -96,7 +96,7 @@ function PropertyFilters() {
               <span className="absolute inset-y-3 start-0 h-6 px-2">
                 <Image className="" src={buildingIcon} alt="Building Icon" />
               </span>
-              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
+              <select className=" select-bordered input w-full pl-10  rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
@@ -111,10 +111,10 @@ function PropertyFilters() {
               <span className="absolute inset-y-3 start-0 h-6 px-2">
                 <Image className="" src={bedIcon} alt="Bed Icon" />
               </span>
-              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
+              <select className=" select-bordered input w-full pl-6 rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option>10</option>
+                <option>6</option>
               </select>
             </div>
           </label>
@@ -126,10 +126,10 @@ function PropertyFilters() {
               <span className="absolute inset-y-3 start-0 h-6 px-2">
                 <Image className="" src={toiletIcon} alt="Toilet Icon" />
               </span>{" "}
-              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
+              <select className=" select-bordered input w-full pl-10 rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option>5</option>
+                <option>6</option>
               </select>
             </div>
           </label>
@@ -141,10 +141,10 @@ function PropertyFilters() {
               <span className="absolute inset-y-3 start-0 h-6 px-2">
                 <Image className="" src={walletIcon} alt="Wallet Icon" />
               </span>{" "}
-              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
+              <select className=" select-bordered input w-full pl-10  rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option>7000</option>
+                <option>8000</option>
               </select>
             </div>
           </label>
