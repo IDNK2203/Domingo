@@ -211,7 +211,7 @@ function RecentlySold() {
   );
 }
 
-export function RecentlySoldList() {
+function RecentlySoldList() {
   // export default function InvoiceList({ invoices }: { invoices: IInvoice[] }) {
   const soldProperties = properties.data?.slice(0, 3);
   return (

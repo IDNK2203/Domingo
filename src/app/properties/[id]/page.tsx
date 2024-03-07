@@ -7,9 +7,17 @@ import bedBlue from "../../../../public/images/bedBlue.svg";
 import toiletBlue from "../../../../public/images/toiletBlue.svg";
 import area from "../../../../public/images/area.svg";
 import checkMark from "../../../../public/images/checkMark.svg";
-import { getSingleProp } from "@/dataFetching/properties";
+import { getSingleProp, getFeatureProps } from "@/dataFetching/properties";
 import ShowInterest from "@/components/ShowInterest";
 import { formatNumberWithCommas } from "@/utils/InvoiceForm";
+
+export async function generateStaticParams() {
+  const { data: properties } = await getFeatureProps();
+
+  return properties.map((prop: Property) => ({
+    slug: prop.slug,
+  }));
+}
 
 export default async function PropertyDetail({
   params,
