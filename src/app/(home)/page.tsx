@@ -1,11 +1,18 @@
 import hero from "../../../public/images/hero.jpg";
 import why from "../../../public/images/why.jpg";
+import buildingIcon from "../../../public/images/house.svg";
+import toiletIcon from "../../../public/images/toilet.svg";
+import walletIcon from "../../../public/images/wallet.svg";
+import locationIcon from "../../../public/images/location.svg";
+import bedIcon from "../../../public/images/bed.svg";
 import Image from "next/image";
 import properties from "../../../public/assets/data/propeties.json";
 import { Property } from "../../../types";
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
+// import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import PropListing from "@/components/PropListing";
+import { formatNumberWithCommas } from "@/utils/InvoiceForm";
+import Cbutton from "@/components/Cbutton";
 
 export default function Home() {
   return (
@@ -43,9 +50,11 @@ function Hero() {
           "flex flex-col bg-black/20 h-full p-20  text-white justify-center items-start"
         }
       >
-        <div className="mt-12 md:mt24 max-w-3xl">
-          <h1 className="my-2">Find Your Perfect Place To Call Home</h1>
-          <p className="my-2">
+        <div className="mt-12 md:mt24 max-w-2xl">
+          <h1 className="my-2 text-6xl font-bold leading-snug">
+            Find Your Perfect Place To Call Home
+          </h1>
+          <p className="my-4e">
             With an extensive network of seasoned professionals with in-depth
             knowledge of the real estate market. We leverage our expertise to
             guide you through every step of your property journey. We are
@@ -59,7 +68,7 @@ function Hero() {
 
 function PropertyFilters() {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 border-black border-2 py-8">
+    <section className="w-full max-w-7xl mx-auto px-4  py-8">
       <form action="">
         <div className="md:flex items-end w-full">
           <label className="form-control w-full mb-2 basis-3/12">
@@ -68,7 +77,9 @@ function PropertyFilters() {
             </div>
 
             <div className="relative">
-              <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2" />
+              <span className="absolute inset-y-3 start-0 h-6 px-2">
+                <Image className="" src={locationIcon} alt="Location Icon" />
+              </span>{" "}
               <input
                 type="email"
                 className="rounded-lg input input-bordered w-full pl-10 pr-12 text-sm shadow-sm"
@@ -81,8 +92,11 @@ function PropertyFilters() {
               <span className="label-text">Property Type</span>
             </div>
             <div className="relative">
-              <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2" />
-              <select className=" select-bordered w-full">
+              {/* <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2" /> */}
+              <span className="absolute inset-y-3 start-0 h-6 px-2">
+                <Image className="" src={buildingIcon} alt="Building Icon" />
+              </span>
+              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
@@ -94,8 +108,10 @@ function PropertyFilters() {
               <span className="label-text">Bed</span>
             </div>
             <div className="relative">
-              <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2" />
-              <select className=" select-bordered w-full">
+              <span className="absolute inset-y-3 start-0 h-6 px-2">
+                <Image className="" src={bedIcon} alt="Bed Icon" />
+              </span>
+              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
@@ -107,8 +123,10 @@ function PropertyFilters() {
               <span className="label-text">Toilet</span>
             </div>
             <div className="relative">
-              <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2" />
-              <select className=" select-bordered w-full">
+              <span className="absolute inset-y-3 start-0 h-6 px-2">
+                <Image className="" src={toiletIcon} alt="Toilet Icon" />
+              </span>{" "}
+              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
@@ -120,8 +138,10 @@ function PropertyFilters() {
               <span className="label-text">price range</span>
             </div>
             <div className="relative">
-              <EnvelopeIcon className="absolute inset-y-3 start-0 h-6 px-2" />
-              <select className=" select-bordered w-full">
+              <span className="absolute inset-y-3 start-0 h-6 px-2">
+                <Image className="" src={walletIcon} alt="Wallet Icon" />
+              </span>{" "}
+              <select className=" select-bordered input w-full rounded-lg text-sm shadow-sm">
                 <option disabled selected></option>
                 <option>Han Solo</option>
                 <option>Greedo</option>
@@ -129,7 +149,7 @@ function PropertyFilters() {
             </div>
           </label>
           <div className="md:p-2 min-w-48 md:ml-6 ">
-            <button className="btn w-full">Search</button>
+            <Cbutton classes="btn-primary w-full">Search</Cbutton>
           </div>
         </div>
       </form>
@@ -139,7 +159,7 @@ function PropertyFilters() {
 
 function Why() {
   return (
-    <section className="max-w-7xl md:flex items-center w-full mx-auto px-4 border-black border-2 py-8">
+    <section className="max-w-7xl md:flex items-center w-full mx-auto px-4 py-8">
       <div className="flex flex-col flex-1 rounded ">
         <Image
           alt="Mountains"
@@ -152,7 +172,9 @@ function Why() {
         />
       </div>
       <div className="flex-1 py-8 md:pl-20">
-        <h2>Why Domingo ?</h2>
+        <h2 className="text-3xl font-bold my-2 md:my-4 text-[--fore_dark] ">
+          Why Domingo ?
+        </h2>
         <p className="my-2">
           With an extensive network of seasoned professionals with in-depth
           knowledge of the real estate market. We leverage our expertise to
@@ -180,8 +202,10 @@ function Why() {
 
 function RecentlySold() {
   return (
-    <section className="max-w-7xl w-full mx-auto px-4 border-black border-2 py-8">
-      <h2 className="my-2">Recently Sold Properties</h2>
+    <section className="max-w-7xl w-full mx-auto px-4 py-8 md:pb-14">
+      <h2 className="my-2 mb-6 text-2xl font-bold text-[--fore_dark]">
+        Recently Sold Properties
+      </h2>
       <RecentlySoldList />
     </section>
   );
@@ -213,21 +237,25 @@ export function RecentlySoldList() {
 
 function RecentlySoldItem({ property }: { property: Property }) {
   return (
-    <li className="p-2 border-black border-2 rounded-lg">
-      <div className={"rounded-lg relative h-48"}>
+    <li className="p-4 shadow rounded-xl">
+      <div className={"rounded-xl relative h-48"}>
         <Image
           alt="Mountains"
           src={property.main_image_url}
           fill
           sizes="100vw"
-          className="rounded-lg object-cover"
+          className="rounded-xl object-cover"
         />
       </div>
-      <div className="flex justify-between py-1">
-        <span>{property.type}</span>
-        <span>{property.price}</span>
+      <div className="flex justify-between py-2">
+        <span className="font-semibold capitalize text-[--fore_dark]">
+          {property.type}
+        </span>
+        <span className="font-semibold text-primary">
+          ${formatNumberWithCommas(property.price)}
+        </span>
       </div>
-      <p className="w-full py-1">
+      <p className="w-full py-1 font-medium text-sm text-[--fore_light]">
         “Thanks to Domingo I found my dream home effortlessly! The seamless
         interaction with agents streamlined the entire process”
       </p>
@@ -242,9 +270,9 @@ function RecentlySoldItem({ property }: { property: Property }) {
           />
         </div>
         {/* https://via.placeholder.com/32x32.png/007766 */}
-        <span className="flex flex-col justify-center text-center ml-2">
+        <span className="flex font-medium text-xs flex-col justify-center text-center ml-2">
           <span>Ayesha Craig</span>
-          <span>Domingo customer</span>
+          <span className="text-[--fore_light]">Domingo customer</span>
         </span>
       </div>
     </li>

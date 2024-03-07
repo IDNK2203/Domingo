@@ -1,16 +1,20 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/images/logo.png";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-[--nav-bg] py-4">
       <div className="max-w-7xl w-full mx-auto px-2 ">
         <div className="navbar-start">
           <label
             htmlFor="my-drawer-3"
             aria-label="open sidebar"
-            className="btn btn-circle btn-neutral md:hidden"
+            className="btn btn-circle btn-ghost md:hidden"
           >
             <div tabIndex={0} role="button" className="btn btn-ghost px-0 mx-0">
               <svg
@@ -38,7 +42,7 @@ export default function Navbar() {
                 className="object-contain"
               ></Image>
             </div>
-            <span className="mx-2 text-base md:text-xl font-medium ">
+            <span className="mx-2 text-base md:text-2xl font-medium ">
               Domingo
             </span>
           </Link>
@@ -53,26 +57,61 @@ export default function Navbar() {
             ></Image>
           </div>
           <ul className="menu menu-horizontal px-1 hidden md:flex">
-            <li>
-              <Link href={"/"}>Home</Link>
+            <li
+              className={`font-medium  *:active:bg-transparent  ${
+                pathname === "/" ? "text-[--fore_dark]" : "text-[--fore_light] "
+              }`}
+            >
+              <Link
+                className="active:bg-transparent hover:bg-transparent hover:text-[--fore_dark]"
+                href={"/"}
+              >
+                Home
+              </Link>
             </li>
-            <li>
-              <Link href={"#"}>About Us</Link>
+            <li
+              className={`font-medium  *:active:bg-transparent ${
+                pathname === "/about"
+                  ? "text-[--fore_dark]"
+                  : "text-[--fore_light] "
+              }`}
+            >
+              <Link
+                className="active:bg-transparent hover:bg-transparent hover:text-[--fore_dark]"
+                href={"#"}
+              >
+                About Us
+              </Link>
             </li>
 
-            <li>
-              <Link href={"/properties"}>Properties</Link>
+            <li
+              className={`font-medium  *:active:bg-transparent ${
+                pathname === "/properties"
+                  ? "text-[--fore_dark]"
+                  : "text-[--fore_light] "
+              }`}
+            >
+              <Link
+                className="active:bg-transparent hover:bg-transparent hover:text-[--fore_dark]"
+                href={"/properties"}
+              >
+                Properties
+              </Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end flex">
-          <a className="btn justify-end">Contact Us</a>
+          <a className="btn btn-primary rounded-full justify-end text-white">
+            Contact Us
+          </a>
         </div>
       </div>
     </div>
   );
 }
 export function SideDrawer() {
+  const pathname = usePathname();
+
   return (
     <div className="drawer-side">
       <label
@@ -82,15 +121,46 @@ export function SideDrawer() {
       ></label>
       <ul className="menu p-4 w-60 min-h-full bg-base-200">
         {/* Sidebar content here */}
-        <li>
-          <Link href={"/"}>Home</Link>
+        <li
+          className={`font-medium  *:active:bg-transparent ${
+            pathname === "/" ? "text-[--fore_dark]" : "text-[--fore_light] "
+          }`}
+        >
+          <Link
+            className="active:bg-transparent hover:bg-transparent hover:text-[--fore_dark]"
+            href={"/"}
+          >
+            Home
+          </Link>
         </li>
-        <li>
-          <Link href={"#"}>About Us</Link>
+        <li
+          className={`font-medium  *:active:bg-transparent ${
+            pathname === "/about"
+              ? "text-[--fore_dark]"
+              : "text-[--fore_light] "
+          }`}
+        >
+          <Link
+            className="active:bg-transparent hover:bg-transparent hover:text-[--fore_dark]"
+            href={"#"}
+          >
+            About Us
+          </Link>
         </li>
 
-        <li>
-          <Link href={"/properties"}>Properties</Link>
+        <li
+          className={`font-medium  *:active:bg-transparent ${
+            pathname === "/properties"
+              ? "text-[--fore_dark]"
+              : "text-[--fore_light] "
+          }`}
+        >
+          <Link
+            className="active:bg-transparent hover:bg-transparent hover:text-[--fore_dark]"
+            href={"/properties"}
+          >
+            Properties
+          </Link>
         </li>
       </ul>
     </div>

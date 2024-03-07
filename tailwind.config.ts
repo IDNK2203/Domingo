@@ -32,7 +32,24 @@ const config: Config = {
     require("tailwind-scrollbar")({ nocompatible: true }),
   ],
   daisyui: {
-    themes: ["emerald"],
+    themes: [
+    {
+      mytheme: {
+        ...require("daisyui/src/theming/themes")["light"],
+      
+        "primary": "#000080",
+        "--primary_dark":"#00002B",
+        "--primary_mid":"#000055",
+        "--primary_light":"#AAAAD5",
+        "--primary_superlight":"#CCCCE6",
+        "--fore_dark":"#1A201F",
+        "secondary": "#005bff",
+        "--nav-bg":"#FAFAFA" ,  
+        "--fore_light":"#85818E"         
+
+      },
+    },
+  ],
   },
 };
 export default config;

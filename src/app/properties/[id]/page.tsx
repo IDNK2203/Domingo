@@ -2,9 +2,14 @@ import Image, { StaticImageData } from "next/image";
 // import properties from "../../../../public/assets/data/propeties.json";
 import { Property } from "../../../../types";
 import why from "../../../../public/images/why.jpg";
-import chevronDown from "../../../../public/images/icon-arrow-down.svg";
+import send from "../../../../public/images/send.svg";
+import bedBlue from "../../../../public/images/bedBlue.svg";
+import toiletBlue from "../../../../public/images/toiletBlue.svg";
+import area from "../../../../public/images/area.svg";
+import checkMark from "../../../../public/images/checkMark.svg";
 import { getSingleProp } from "@/dataFetching/properties";
 import ShowInterest from "@/components/ShowInterest";
+import { formatNumberWithCommas } from "@/utils/InvoiceForm";
 
 export default async function PropertyDetail({
   params,
@@ -25,7 +30,7 @@ export default async function PropertyDetail({
   }
 
   return (
-    <section className="max-w-7xl items-center w-full mx-auto px-4 border-black border-2 py-8">
+    <section className="max-w-7xl items-center w-full mx-auto px-4 py-8 md:py-16">
       {/*Hero */}
       <HeroImage imgUrl={property?.main_image_url || why} />
       {/*Details */}
@@ -41,7 +46,6 @@ export default async function PropertyDetail({
           <HorizontalLine />
           {/* features */}
           <Features property={property} />
-          You have indicated interest in this property
           <HorizontalLine />
           {/* gallery */}
           <Gallery property={property} />
@@ -53,7 +57,7 @@ export default async function PropertyDetail({
 
 function HeroImage({ imgUrl }: { imgUrl: string | StaticImageData }) {
   return (
-    <div className="w-full relative max-h-dvh h-[600px] rounded-lg ">
+    <div className="w-full relative max-h-dvh h-[520px] rounded-lg ">
       <Image
         alt="Mountains"
         src={imgUrl}
@@ -70,25 +74,80 @@ function HeroImage({ imgUrl }: { imgUrl: string | StaticImageData }) {
 function Details({ property }: { property: Property }) {
   return (
     <div className="my-2">
-      <div className="flex my-2 w-full justify-between">
-        <h2>{property.type}</h2>
-        <p>{property.price}</p>
+      <div className="flex my-4 w-full justify-between ">
+        <h2 className="font-bold capitalize text-3xl">{property.type}</h2>
+        <p className="font-semibold text-2xl text-primary">
+          ${formatNumberWithCommas(property.price)}
+        </p>
       </div>
       <div className="my-2">
         <ul className="flex flex-wrap">
           <li className="mr-2">
-            <div className="badge badge-outline">
-              {property.location.split(",")[0]}
+            <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
+              <div className="relative h-6 w-6 mr-2">
+                <Image
+                  alt="Mountains"
+                  src={send}
+                  fill
+                  sizes="auto"
+                  style={{
+                    objectFit: "cover", // cover, contain, none
+                  }}
+                />
+              </div>
+              <span>{property.location.split("\n")[1]}</span>
             </div>
           </li>
-          {/* <li className="mr-2">
-            <div className="badge badge-outline">{property.size}</div>
-          </li> */}
-          {property.amenities?.[0].map((el, i) => (
-            <li className="mr-2" key={i}>
-              <div className="badge badge-outline">{el}</div>
-            </li>
-          ))}
+
+          <li className="mr-2">
+            <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
+              <div className="relative h-6 w-6 mr-2">
+                <Image
+                  alt="Mountains"
+                  src={bedBlue}
+                  fill
+                  sizes="auto"
+                  style={{
+                    objectFit: "cover", // cover, contain, none
+                  }}
+                />
+              </div>
+              <span>6 Bedrooms</span>
+            </div>
+          </li>
+          <li className="mr-2">
+            <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
+              <div className="relative h-6 w-6 mr-2">
+                <Image
+                  alt="Mountains"
+                  src={toiletBlue}
+                  fill
+                  sizes="auto"
+                  style={{
+                    objectFit: "cover", // cover, contain, none
+                  }}
+                />
+              </div>
+              <span>3 Toilets</span>
+            </div>
+          </li>
+          <li className="mr-2">
+            <div className="font-semibold flex items-center p-2 rounded-full text-sm bg-primary/10 text-primary ">
+              <div className="relative h-6 w-6 mr-2">
+                <Image
+                  alt="Mountains"
+                  src={area}
+                  fill
+                  sizes="auto"
+                  style={{
+                    objectFit: "cover", // cover, contain, none
+                  }}
+                />
+              </div>
+              <span>1800m</span>
+              <span className="text-[10px] align-top -translate-y-1">2</span>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -97,28 +156,32 @@ function Details({ property }: { property: Property }) {
 
 function Description({ property }: { property: Property }) {
   return (
-    <div className="my-2">
-      <h2> Description</h2>
-      <p className="my-3">{property.description}</p>
+    <div className="my-6">
+      <h2 className="font-semibold text-xl text-[--fore_dark]"> Description</h2>
+      <p className="my-2 text-[--fore_light]">{property.description}</p>
     </div>
   );
 }
 
 function Features({ property }: { property: Property }) {
   return (
-    <div className="my-2">
-      <h2> Features</h2>
-      <ul className="my-3 flex">
+    <div className="my-6">
+      <h2 className="font-semibold text-[--fore_dark] text-xl"> Features</h2>
+      <ul className="my-2 flex flex-wrap">
         {property.features?.[0].map((el, i) => (
-          <li key={i} className="mr-2 flex items-center">
-            <span className="mr-2">
+          <li key={i} className="mr-2 flex flex-1 items-center">
+            <div className="relative h-4 w-4 mr-2">
               <Image
-                className="-rotate-90"
-                src={chevronDown}
-                alt="Arrow Indicator"
+                alt="Mountains"
+                src={checkMark}
+                fill
+                sizes="auto"
+                style={{
+                  objectFit: "cover", // cover, contain, none
+                }}
               />
-            </span>
-            <span>{el}</span>
+            </div>
+            <span className="font-medium text-sm">{el}</span>
           </li>
         ))}
       </ul>
@@ -127,25 +190,28 @@ function Features({ property }: { property: Property }) {
 }
 
 const HorizontalLine = () => {
-  return <div className="w-full border-t border-gray-300  my-4"></div>;
+  return <div className="w-full border-t border-[--fore_light] my-6"></div>;
 };
 
 function Gallery({ property }: { property: Property }) {
   return (
-    <ul className="my-2 grid gap-2 min-[520px]:grid-cols-2 md:grid-cols-3">
-      {property.featured_images_url?.map((el, i) => (
-        <li key={1} className=" border-black border-2 relative">
-          <div className={"relative h-48"}>
-            <Image
-              alt="Mountains"
-              src={el}
-              fill
-              sizes="100vw"
-              className=" object-cover"
-            />
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div className="my-6">
+      <h2 className="font-semibold text-[--fore_dark] text-xl"> Gallery</h2>
+      <ul className="my-2 grid gap-2 min-[520px]:grid-cols-2 md:grid-cols-3">
+        {property.featured_images_url?.map((el, i) => (
+          <li key={1} className="relative">
+            <div className={"relative h-48"}>
+              <Image
+                alt="Mountains"
+                src={el}
+                fill
+                sizes="100vw"
+                className=" object-cover"
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

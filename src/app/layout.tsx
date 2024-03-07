@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="corporate"
+      data-theme="mytheme"
       className={`${InterFont.variable} ${PoppinsFont.variable} `}
     >
       <body>

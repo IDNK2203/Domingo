@@ -1,14 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
-export function handleAddNewLineItem(push: any) {
-  push({
-    id: uuidv4(),
-    name: "",
-    quantity: 1,
-    price: 0,
-    total: 0,
-  });
-}
 export function formatNumberWithCommas(amount: number | string) {
   return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
