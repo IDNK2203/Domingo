@@ -19,6 +19,19 @@ export async function generateStaticParams() {
   }));
 }
 
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { id: slug } = params;
+
+  const { data: property } = await getSingleProp(slug);
+
+  return {
+    title: property.name,
+    description: `This page belongs to ${property.name} `,
+  };
+}
+
 export default async function PropertyDetail({
   params,
 }: {
@@ -83,7 +96,7 @@ function Details({ property }: { property: Property }) {
   return (
     <div className="my-2">
       <div className="flex my-4 w-full justify-between ">
-        <h2 className="font-bold capitalize text-3xl">{property.type}</h2>
+        <h2 className="font-bold capitalize text-3xl">{property.name}</h2>
         <p className="font-semibold text-2xl text-primary">
           ${formatNumberWithCommas(property.price)}
         </p>

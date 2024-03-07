@@ -52,7 +52,7 @@ function FeaturedProperty({ property }: { property: Property }) {
       </div>
       <div className="flex justify-between py-2">
         <span className="font-semibold capitalize text-[--fore_dark]">
-          {property.type}
+          {property.name}
         </span>
         <small className="flex">
           <div className="relative h-4 w-4">
