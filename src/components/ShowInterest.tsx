@@ -49,25 +49,28 @@ export default function ShowInterest({ propertyId }: { propertyId: string }) {
   return (
     <div className="">
       <dialog id="my_modal_2" className="modal">
-        <div className="modal-box flex flex-col justify-center w-full max-w-md p-8">
-          <h3 className="font-bold text-2xl mx-auto text-primary text-center">
-            Successful
-          </h3>
-          <p className="py-4 text-center font-semibold text-xl text-[--fore_light]">
-            Your interest has been registered successfully
-          </p>
-          <div className="relative h-32 w-32 mx-auto">
-            <Image
-              alt="Mountains"
-              src={checkMark}
-              fill
-              sizes="auto"
-              style={{
-                objectFit: "cover", // cover, contain, none
-              }}
-            />
-          </div>{" "}
+        <div className="p-4 modal-box ">
+          <div className="flex flex-col justify-center w-full max-w-md p-8">
+            <h3 className="font-bold text-2xl mx-auto text-primary text-center">
+              Successful
+            </h3>
+            <p className="py-4 text-center font-semibold text-xl text-[--fore_light]">
+              Your interest has been registered successfully
+            </p>
+            <div className="relative h-32 w-32 mx-auto">
+              <Image
+                alt="Mountains"
+                src={checkMark}
+                fill
+                sizes="auto"
+                style={{
+                  objectFit: "cover", // cover, contain, none
+                }}
+              />
+            </div>{" "}
+          </div>
         </div>
+
         {/* blur-sm */}
         <form method="dialog" className="modal-backdrop glass">
           <button>close</button>
@@ -187,7 +190,7 @@ export default function ShowInterest({ propertyId }: { propertyId: string }) {
           </form>
         </div>
       ) : (
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:p-8 flex justify-center flex-col border-primary/20 border-[1px] bg-primary/10 rounded">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 p-8 flex justify-center flex-col border-primary/20 border-[1px] bg-primary/10 rounded">
           <div className="relative h-10 w-10 mx-auto">
             <Image
               alt="Mountains"

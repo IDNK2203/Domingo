@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   const { data: property } = await getSingleProp(slug);
 
   return {
-    title: property.name,
+    title: `${property.name} | Domingo`,
     description: `This page belongs to ${property.name} `,
   };
 }
@@ -86,7 +86,7 @@ function HeroImage({ imgUrl }: { imgUrl: string | StaticImageData }) {
         // quality={100}
         fill
         sizes="100vw"
-        className="object-cover rounded-lg  z-[1]"
+        className="object-cover rounded-lg"
       />
     </div>
   );
